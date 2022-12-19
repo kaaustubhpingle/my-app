@@ -1,17 +1,30 @@
 import { useState } from "react";
 
 function App() {
-  let [counter, setcounter] = useState(100);
-  let press = () => {
-    counter--;
-    setcounter(counter);
+  let title = "Map Demo";
+  let [list, setList] = useState([]);
+
+  let addItem = () => {
+    // alternate :: No DOM PLZ!
+    let textRef = document.querySelector("#textId1");
+
+    // logical part
+    let newList = [textRef.value, ...list];
+
+    // dom part
+    setList(newList);
+    textRef.value = "";
   };
 
   return (
     <div>
-      <h1>Kaaustubh Application</h1>
-      <h1>{counter}</h1>
-      <input type="button" value="click" onClick={press} />
+      <h1> {title} </h1>
+      <input type="text" name="" id="textId1" />
+      <input type="button" value="Add Item Into List" onClick={addItem} />
+
+      {list.map((item) => (
+        <h1>{item}</h1>
+      ))}
     </div>
   );
 }
