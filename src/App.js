@@ -1,12 +1,18 @@
-// MULTI LINE JSX ::: <App />
+import { useState } from "react";
+
 function App() {
+  let [counter, setcounter] = useState(100);
+  let press = () => {
+    counter--;
+    setcounter(counter);
+  };
+
   return (
-    <h1>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum sed maxime
-      quisquam inventore reprehenderit! Nobis ducimus, voluptatem cum at
-      placeat, quia facere ut natus ipsam id temporibus iusto velit officia?
-    </h1>
+    <div>
+      <h1>Kaaustubh Application</h1>
+      <h1>{counter}</h1>
+      <input type="button" value="click" onClick={press} />
+    </div>
   );
 }
-
 export default App;
